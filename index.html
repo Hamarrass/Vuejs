@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vuejs</title>
+    <script src="vuejs.js"></script>
+    <link rel="stylesheet" href="bootstrap.css">
+    
+ <div class="container row">
+<div class="col">
+    <div id='app'>
+
+    <input class="form-control"  v-model='name'  @keyup.ctrl.enter='add' @keyup.alt.enter="logName" type="text">
+    <input class="form-control" type="text" v-model='name'> 
+    <!--event modifier= prevent  doesn't let your page refresh-->
+    <button class="btn btn-primary" @click.prevent='add'>submit</button>
+
+
+    <p>{{name}}</p>
+    <br>
+    <a @click.prevent='add' href="https://vuejs.org/v2/guide/"> click here</a>
+    <br>
+    <label for="">initNumber</label>
+    <input class="form-control" type="text" v-model='initNumber'>
+        
+        
+    <div> counter={{counter}}</div>
+
+
+        {{counter}}*{{initNumber}}={{multiblication}}    
+        <!-- for the events we use on ... click.once is name event modifier-->
+
+
+        <button  class="btn btn-primary" v-on:click='inc(1)'>+1</button>
+        <button  class="btn btn-primary" v-on:click='dec(1)'>-1</button>
+        <!-- we have another method intead v-on-->
+        
+        <button class="btn btn-primary" @click='inc(5)'>+5</button>
+        <button class="btn btn-primary" @click='dec(10)'>-10</button>
+
+    <h4>
+         <span class="badge" v-bind:class='{"bg-danger": varClass , "bg-success": !varClass }'> {{message}}</span> 
+    </h4> 
+     </div>
+    </div>
+ </div>
+        
+    
+</head>
+    <body>
+
+        
+    </body>
+    <script src="script.js"></script>
+</html>
+
+
+<!-- keyup (key modifier) for exemple click  when
+            you click a button in your clavie
+                the methods it will be handled.
+
+            keyup.enter:
+                so the solution is don't do nothing 
+                till we use keyup.enter so 
+                we click enter then excute the method
+
+            v-model:
+                if wanna bind input with a  variable  declared in  data to  html ,
+            
+        -->
