@@ -11,39 +11,63 @@
 <div class="col">
     <div id='app'>
 
-    <input class="form-control"  v-model='name'  @keyup.ctrl.enter='add' @keyup.alt.enter="logName" type="text">
-    <input class="form-control" type="text" v-model='name'> 
-    <!--event modifier= prevent  doesn't let your page refresh-->
-    <button class="btn btn-primary" @click.prevent='add'>submit</button>
+                <input class="form-control"  v-model='name'  @keyup.ctrl.enter='add' @keyup.alt.enter="logName" type="text">
+                <input class="form-control" type="text" v-model='name'> 
+                <!--event modifier= prevent  doesn't let your page refresh-->
+                <button class="btn btn-primary" @click.prevent='add'>submit</button>
 
 
-    <p>{{name}}</p>
-    <br>
-    <a @click.prevent='add' href="https://vuejs.org/v2/guide/"> click here</a>
-    <br>
-    <label for="">initNumber</label>
-    <input class="form-control" type="text" v-model='initNumber'>
-        
-        
-    <div> counter={{counter}}</div>
+                <button @click='toggle= !toggle' class="btn-danger">toggle</button>
 
 
-        {{counter}}*{{initNumber}}={{multiblication}}    
-        <!-- for the events we use on ... click.once is name event modifier-->
 
-
-        <button  class="btn btn-primary" v-on:click='inc(1)'>+1</button>
-        <button  class="btn btn-primary" v-on:click='dec(1)'>-1</button>
-        <!-- we have another method intead v-on-->
-        
-        <button class="btn btn-primary" @click='inc(5)'>+5</button>
-        <button class="btn btn-primary" @click='dec(10)'>-10</button>
-
-    <h4>
-         <span class="badge" v-bind:class='{"bg-danger": varClass , "bg-success": !varClass }'> {{message}}</span> 
-    </h4> 
+                  <div v-if='toggle'>   
+                     <div>
+        <p>{{name}}</p>
+        <br>
+        <a @click.prevent='add' href="https://vuejs.org/v2/guide/"> click here</a>
+        <br>
+        <label for="">initNumber</label>
+        <input class="form-control" type="text" v-model='initNumber'>
+            
+            
+        <div> counter={{counter}}</div>
+    
+    
+            {{counter}}*{{initNumber}}={{multiblication}}    
+            <!-- for the events we use on ... click.once is name event modifier-->
+    
+            <button  class="btn btn-primary" v-on:click='inc(1)'>+1</button>
+            <button  class="btn btn-primary" v-on:click='dec(1)'>-1</button>
+            <!-- we have another method intead v-on-->
+    
+            <button class="btn btn-primary" @click='inc(5)'>+5</button>
+            <button class="btn btn-primary" @click='dec(10)'>-10</button>
+    
+        <h4>
+          <!-- you can   use atribute  font-size with singlecout or dont if  you use frontZise with camelcase  -->
+               <span 
+                v-bind:class="['badge',classObject]" 
+                v-bind:style="{color : varStyleColor ? 'black' :'yellow', fontSize:'30px'}" >
+                {{message}}
+              </span> 
+            </style>
+        </h4> 
+                     </div>
+                 </div>
+                 <!-- we have  v-else-if  that we dont find it in react and angular-->
+                 <div v-else >
+                        <table class="table">
+                            <tr >
+                                <td>Index</td><td >Id</td> <td>Color</td> <td>Age</td>
+                            </tr>
+                            <tr v-for='(course , index) in courses'>
+                                <td>{{index}}</td><td >{{course.id }}</td> <td>{{course.color}}</td> <td>{{course.age}}</td>
+                            </tr>
+                        </table>
+                 </div>
      </div>
-    </div>
+
  </div>
         
     
@@ -69,3 +93,10 @@
                 if wanna bind input with a  variable  declared in  data to  html ,
             
         -->
+
+        
+    <!-- the deference between v-id and v-show 
+        : v-if dont desplay the dom in enspect element but the 
+     v-show  display the dom in inspec elememnt so the  peable 
+     can show up this dom just change the  display in the style 
+    -->

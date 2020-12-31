@@ -8,6 +8,14 @@ new Vue({
        initNumber:1,
        message   :'',
        varClass  :Boolean,
+       varStyleColor  :Boolean,
+       toggle    :false,
+       courses    :[
+          {'id':1 ,'color':'red'    , 'age':'25'},
+          {'id':2 ,'color':'black'  , 'age':'20'},
+          {'id':3 ,'color':'yellow' , 'age':'15'},
+          {'id':4 ,'color':'brown'  , 'age':'10'},
+       ]
    },
 
    methods: {
@@ -23,29 +31,35 @@ new Vue({
        logName: function(){
          console.log('log my name');
        },
+
+     
+
              
      
      },
        /* computed let your fucntion excuted in one more time */
    computed: {
       multiblication :function(){
-         console.log('coucou');
-         return this.counter * this.initNumber;              
+            console.log('coucou');
+             return this.counter * this.initNumber;              
          },
       classObject : function(){ 
              return {"bg-danger": this.varClass , "bg-success": !this.varClass }
-           }
+           },
+
 
    },
    watch: {
       multiblication :function(v){
               if(v>10){
-                 this.varClass=true;
-                 this.message ='Winner' ;
+                 this.varClass      = true;
+                 this.varStyleColor = true ;
+                 this.message       = 'Winner' ;
               }
               else{
-                 this.varClass=false;
-                 this.message ='Loser';
+                 this.varStyleColor = false;
+                 this.varClass      = false;
+                 this.message       = 'Loser';
               }
        }
    }    
